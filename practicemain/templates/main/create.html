@@ -1,0 +1,32 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+    Create New Task
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h1 class="text-center mb-4">Fill the data into fields</h1>
+                <form method="post" class="task-form">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="id_title">Title</label>
+                        {{ form.title }}
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="id_task">Description of task</label>
+                        {{ form.task }}
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                    </div>
+                    {% if error %}
+                        <div class="alert alert-danger mt-3">{{ error }}</div>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
